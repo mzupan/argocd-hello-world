@@ -1,0 +1,51 @@
+replicaCount: 1
+
+image:
+  repository: mzupan/argocd-hello-world
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: latest
+
+app:
+  version: "appVerHere"
+  branch:  "appBranchHere"
+  hostname: hello-dev.leaflink.io
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: nginx-internal
+    leaflink.io/externaldns.type: public
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
