@@ -33,7 +33,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: VERSION
-              value: {{ .Values.app.version }}
+              value: {{ .Values.app.version }}-foobar
             - name: BRANCH
               value: {{ .Values.app.branch }}
           ports:
